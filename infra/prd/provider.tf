@@ -8,12 +8,12 @@ terraform {
     }
   }
 
-  backend "s3" {
-    bucket  = "graduation-movie-tfstate"
-    key     = "prd/terraform.tfstate"
-    region  = "ap-northeast-1"
-    encrypt = true
-  }
+  # backend "s3" {
+  #   bucket  = "graduation-movie-tfstate"
+  #   key     = "prd/terraform.tfstate"
+  #   region  = "ap-northeast-1"
+  #   encrypt = true
+  # }
 }
 
 provider "aws" {
