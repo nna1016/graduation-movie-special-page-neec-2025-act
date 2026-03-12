@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Noto Serif JP", serif;
+  --color-sakura: #f8b8c4;
+  --color-sakura-dark: #e593a4;
+  --color-sky: #cce0f5;
+  --color-sunlight: #fdf6e3;
+  --color-grass: #a8c69f;
+  --color-ink: #4a5059;
+}
+
+body {
+  font-family: "Noto Serif JP", serif;
+  color: var(--color-ink);
+  background-color: var(--color-sky);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 晴れやかで希望に満ちた、朝焼け/夕暮れのような温かいグラデーション */
+.bg-watercolor {
+  background: linear-gradient(180deg, 
+    #cce0f5 0%, 
+    #e6f0fa 25%, 
+    #fdf6e3 50%, 
+    #e2f0d9 75%, 
+    #a8c69f 100%
+  );
+  background-attachment: fixed;
+}
+
+/* 水彩紙のテクスチャ（ノイズ） */
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* 心温まる、少し温かみのあるすりガラス（境界線を完全にぼかす） */
+.glass-card {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 縦書き用ユーティリティ（感慨深さを演出） */
+.vertical-rl {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
