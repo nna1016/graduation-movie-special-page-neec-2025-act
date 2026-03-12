@@ -6,3 +6,10 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# AWS credentials
+infra/*/aws_credentials
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl

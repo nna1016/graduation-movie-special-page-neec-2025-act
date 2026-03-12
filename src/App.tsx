@@ -157,7 +157,7 @@ const GreetingSection = () => (
       <p className="text-base sm:text-lg md:text-xl leading-[2.2] sm:leading-[2.5] font-light text-ink/85 text-justify md:text-center tracking-wide">
         先輩方、ご卒業おめでとうございます。<br className="hidden md:block"/>
         <br className="hidden md:block"/>
-        一緒に笑い合った部室、遅くまで残って準備した文化祭、<br className="hidden md:block"/>
+        一緒に笑い合った部室、遅くまで残って準備した体育祭やかまた祭、<br className="hidden md:block"/>
         何気ない毎日のすべてが、私たちの大切な思い出です。<br/>
         <br/>
         いつも優しく、時には厳しく導いてくれたその背中を、<br className="hidden md:block"/>
@@ -185,7 +185,7 @@ const MovieSection = () => (
 
       <div className="text-center mb-8 sm:mb-10 relative z-10">
         <h2 className="text-xl sm:text-2xl md:text-4xl font-light tracking-[0.2em] text-ink">Graduation Movie</h2>
-        <p className="text-xs sm:text-sm md:text-base text-ink/60 mt-2 sm:mt-3 tracking-widest">3年間の思い出を振り返って</p>
+        <p className="text-xs sm:text-sm md:text-base text-ink/60 mt-2 sm:mt-3 tracking-widest">短くも濃い、かけがえのない瞬間を振り返って</p>
       </div>
       
       <div 
@@ -324,7 +324,7 @@ const EndingSection = () => (
         }}
         className="text-xl sm:text-2xl md:text-3xl font-light tracking-[0.25em] text-ink/80 leading-loose"
       >
-        先輩たちの未来が、<br className="md:hidden"/>素晴らしいものでありますように。
+        先輩たちの未来が、<br/>素晴らしいものでありますように。
       </motion.p>
     </motion.div>
   </section>
