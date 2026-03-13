@@ -172,46 +172,59 @@ const GreetingSection = () => (
 );
 
 // --- 2. 動画（Movie）セクション ---
-const MovieSection = () => (
-  <section className="w-full max-w-4xl mx-auto">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 2, ease: "easeOut" }}
-      className="glass-card rounded-3xl p-4 sm:p-6 md:p-10 relative"
-    >
-      {/* 動画の後ろの温かい後光 */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-sunlight/40 blur-3xl rounded-full pointer-events-none"></div>
+const MovieSection = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
-      <div className="text-center mb-8 sm:mb-10 relative z-10">
-        <h2 className="text-xl sm:text-2xl md:text-4xl font-light tracking-[0.2em] text-ink">Graduation Movie</h2>
-        <p className="text-xs sm:text-sm md:text-base text-ink/60 mt-2 sm:mt-3 tracking-widest">短くも濃い、かけがえのない瞬間を振り返って</p>
-      </div>
-      
-      <div 
-        className="relative aspect-video group cursor-pointer"
-        style={{ 
-          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 95%)', 
-          WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 95%)' 
-        }}
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  return (
+    <section className="w-full max-w-4xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="glass-card rounded-3xl p-4 sm:p-6 md:p-10 relative"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1280&q=80" 
-          alt="Movie Thumbnail" 
-          className="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-30" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-20 h-20 md:w-24 md:h-24 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl transform transition-all duration-500 group-hover:scale-110 group-hover:bg-white">
-            <Play className="w-8 h-8 md:w-10 md:h-10 text-sakura-dark ml-2" fill="currentColor" />
-          </div>
+        {/* 動画の後ろの温かい後光 */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-sunlight/40 blur-3xl rounded-full pointer-events-none"></div>
+
+        <div className="text-center mb-8 sm:mb-10 relative z-10">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-light tracking-[0.2em] text-ink">Graduation Movie</h2>
+          <p className="text-xs sm:text-sm md:text-base text-ink/60 mt-2 sm:mt-3 tracking-widest">短くも濃い、かけがえのない瞬間を振り返って</p>
         </div>
-      </div>
-    </motion.div>
-  </section>
-);
+
+        <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+          <video
+            ref={videoRef}
+            src="/graduation-movie.mp4"
+            className="w-full h-full object-cover"
+            controls={isPlaying}
+            playsInline
+            onEnded={() => setIsPlaying(false)}
+          />
+          {!isPlaying && (
+            <div
+              className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+              onClick={handlePlay}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl transform transition-all duration-500 group-hover:scale-110 group-hover:bg-white z-10">
+                <Play className="w-8 h-8 md:w-10 md:h-10 text-sakura-dark ml-2" fill="currentColor" />
+              </div>
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
 
 // --- 3. メッセージカルーセルセクション ---
 const MessageSection = () => {
