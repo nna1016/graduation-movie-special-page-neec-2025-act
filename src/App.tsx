@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Play, ChevronLeft, ChevronRight, Quote, Sparkles } from 'lucide-react';
+import { messages } from './data/messages';
 
 // --- 鳩のSVGコンポーネント ---
 const Dove = ({ className }: { className?: string }) => (
@@ -213,12 +214,6 @@ const MovieSection = () => (
 );
 
 // --- 3. メッセージカルーセルセクション ---
-const messages = [
-  { id: 1, text: "ご卒業おめでとうございます！部活の帰り道、一緒にアイスを食べながら語り合った時間が一番の思い出です。先輩のこれからの活躍を、ずっとずっと応援しています！", author: "2年 〇〇部 後輩一同" },
-  { id: 2, text: "先輩たちが引退してからの日々、その存在の大きさを痛感しています。いつも私たちの相談に乗ってくれてありがとうございました。たまには部活にも顔を出してくださいね！", author: "1年 有志一同" },
-  { id: 3, text: "文化祭での先輩たちのクラスの出し物、本当にかっこよかったです。私たちも先輩たちのような最高な学年になれるよう頑張ります。ご卒業、本当におめでとうございます！", author: "2年 実行委員一同" },
-];
-
 const MessageSection = () => {
   const [index, setIndex] = useState(0);
 
